@@ -1,0 +1,13 @@
+[
+  {
+    "model": "portfolio.programme",
+    "pk": 2,
+    "fields": {
+      "name": "Accelerator TWO Programme",
+      "cohort": 1,
+      "partners": [],
+      "participants": [],
+      "coaches_mentors": []
+    }
+  }
+]

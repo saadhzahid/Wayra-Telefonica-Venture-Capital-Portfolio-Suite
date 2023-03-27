@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+
+
+    <div class="container" id="logincontainer">
+        <div class="col-xs-1 mt-3" align="center">
+            <img src="{% static 'images/logo.jpg' %}" alt="logo" width="128" height="128" align="center">
+            <h6 class="lead text-center mb-2"><em>Telefónica Innovation</em></h6>
+        </div>
+        <div class="col-12" id="card">
+            <h1 class="text-center mt-5 mb-4">Welcome Back</h1>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="col-sm-10 offset-sm-1 offset-md-3 col-md-6 mt-3 signupform">
+                    {% load widget_tweaks %}
+                    {% include 'partials/utilities/bootstrap_form.html' with form=form %}
+                    {% include 'partials/messages.html' with messages=messages %}
+
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <div class="col-xs-1 mt-2" align="center">
+                        <input type="submit" value="Log In" class="btn btn-primary btn-lg mr-auto">
+                        <p class="mt-2">Forgot your password? <a href='{% url 'login' %}'>Reset Here</a></p></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

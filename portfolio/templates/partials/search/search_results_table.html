@@ -1,0 +1,30 @@
+<!-- Responsive table with search results -->
+
+{% if search_results %}
+    <ul class="list-group list-group-flush" id="results_table">
+        {% if search_results|length == 1 %}
+            {% for result in search_results.0.1 %}
+                {% include 'partials/search/search_result_cell.html' with result=result destination_url=search_results.0.2.destination_url %}
+            {% endfor %}
+        {% else %}
+            {% for query in search_results %}
+                <li class="list-group-item list-group-item-dark pt-1">{{ query.0 }}</li>
+                {% if query.1 %}
+                    {% for result in query.1 %}
+                        {% include 'partials/search/search_result_cell.html' with result=result destination_url=query.2.destination_url %}
+                    {% endfor %}
+                {% else %}
+                    <a class="list-group-item list-group-item-action bg-light" style="border: 0;">
+                        No Search Results Found.
+                    </a>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </ul>
+{% else %}
+    {% if searched != "" %}
+        <a class="list-group-item list-group-item-action bg-light" style="border: 0;">
+            No Search Results Found.
+        </a>
+    {% endif %}
+{% endif %}

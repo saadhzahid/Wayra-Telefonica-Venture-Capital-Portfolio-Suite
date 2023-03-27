@@ -1,0 +1,8 @@
+<div class="pt-1 pb-3">
+    <h4>Companies Founded</h4>
+    <div class="row mb-3 rounded p-3">
+        {% for company in founder_companies%}
+            {% include 'partials/company/company_card.html' with company=company %}
+        {% endfor %}
+    </div>
+</div>

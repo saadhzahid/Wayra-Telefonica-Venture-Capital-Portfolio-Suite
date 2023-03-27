@@ -1,0 +1,67 @@
+[
+  {
+    "model": "portfolio.company",
+    "pk": 201,
+    "fields": {
+      "name": "Default 201 Ltd",
+      "company_registration_number": "00000201",
+      "trading_names": "D201_ltd",
+      "previous_names": "Ante201 LTD",
+      "registered_address": "Strand, London WC2R 2LS",
+      "jurisdiction": "United Kingdom",
+      "incorporation_date": "2023-02-16"
+    }
+  },
+  {
+    "model": "portfolio.company",
+    "pk": 3,
+    "fields": {
+      "name": "Default 3 Ltd",
+      "company_registration_number": "00000002",
+      "trading_names": "D3_LTD",
+      "previous_names": "Ante 3 LTD",
+      "registered_address": "Strand, London WC2R 2LS",
+      "jurisdiction": "United Kingdom",
+      "incorporation_date": "2023-02-16"
+    }
+  },
+  {
+    "model": "portfolio.company",
+    "pk": 4,
+    "fields": {
+      "name": "Default 4 Ltd",
+      "company_registration_number": "00000002",
+      "trading_names": "D4_LTD",
+      "previous_names": "Ante 4 LTD",
+      "registered_address": "Strand, London WC2R 2LS",
+      "jurisdiction": "United Kingdom",
+      "incorporation_date": "2023-02-16"
+    }
+  },
+  {
+    "model": "portfolio.company",
+    "pk": 5,
+    "fields": {
+      "name": "Default 5 Ltd",
+      "company_registration_number": "00000002",
+      "trading_names": "D5_LTD",
+      "previous_names": "Ante 5 LTD",
+      "registered_address": "Strand, London WC2R 2LS",
+      "jurisdiction": "United Kingdom",
+      "incorporation_date": "2023-02-16"
+    }
+  },
+  {
+    "model": "portfolio.company",
+    "pk": 6,
+    "fields": {
+      "name": "Default 6 Ltd",
+      "company_registration_number": "00000002",
+      "trading_names": "D6_LTD",
+      "previous_names": "Ante 6 LTD",
+      "registered_address": "Strand, London WC2R 2LS",
+      "jurisdiction": "United Kingdom",
+      "incorporation_date": "2023-02-16"
+    }
+  }
+]

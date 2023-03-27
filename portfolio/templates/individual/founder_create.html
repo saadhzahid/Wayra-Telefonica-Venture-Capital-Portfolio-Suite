@@ -1,0 +1,21 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+    {% load static %}
+
+    <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles_create.css' %}">
+    </head>
+    <body>
+    <h1>Create Founder</h1>
+    <p></p>
+    <form action="{% url 'founder_create' %}" method="post">
+        {% csrf_token %}
+        {% include 'partials/utilities/form_input.html' with form=founderForm %}
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+
+    </body>
+
+    </html>
+{% endblock %}

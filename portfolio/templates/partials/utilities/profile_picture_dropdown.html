@@ -1,0 +1,32 @@
+{% load static %}
+
+<div class="dropdown" id="dropdownuser">
+    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+       data-bs-toggle="dropdown" aria-expanded="true">
+
+        <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
+        {% if user.profile_picture %}
+            <img alt="..."
+                 src="{{ user.profile_picture.url }}"
+                 class="rounded-circle me-2"
+                 style="width: 32px; height: 32px"
+            >
+        {% else %}
+            <!-- <i class="fas fa-fw fa-user rounded-circle fa-5x pt-1 bg-secondary" style="width: 100px; height: 100px"></i> -->
+            <img alt="..."
+                 src="{% static 'images/default_profile_picture.jpeg' %}"
+                 class="rounded-circle me-2 wayra-logo"
+                 style="width: 32px; height: 32px"
+            >
+        {% endif %}
+
+
+
+        <strong>{{ request.user }}</strong>
+    </a>
+
+    <ul class="dropdown-menu text-small shadow ">
+        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+    </ul>
+</div>
+

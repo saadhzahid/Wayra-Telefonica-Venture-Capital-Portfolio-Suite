@@ -1,0 +1,84 @@
+{% load humanize %}
+{% load static %}
+
+<script>
+    function clicked(e) {
+        if (!confirm('Are you sure?')) {
+            e.preventDefault();
+        }
+    }
+</script>
+
+<table class="table table-hover">
+
+    <thead>
+    <tr>
+        <th scope="col">File Name</th>
+        <th scope="col">File Type</th>
+        <th scope="col">File Size</th>
+        <th scope="col">Uploaded At</th>
+        {% if request.user.is_staff %}
+            <th scope="col">Permissions</th>
+        {% endif %}
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for document in documents %}
+        {% if document.is_private and request.user.is_staff or not document.is_private %}
+            {% include 'partials/document/document_modal.html' with document=document id=forloop.counter%}
+            <tr  data-toggle="modal" data-target="#exampleModalCenter{{forloop.counter}}">
+                <td class="text-center">{{ document.file_name }}</td>
+                <td class="text-center">
+                    <div class="file-icon file-icon-lg" data-type="{{ document.file_type }}"></div>
+                </td>
+                <td class="text-center">{{ document.file_size }}</td>
+                <td class="text-center">{{ document.updated_at }}</td>
+                {% if request.user.is_staff %}
+                    <td>
+                        {% if document.is_private %}
+                            Staff Only
+                        {% else %}
+                            Public
+                        {% endif %}
+                    </td>
+                {% endif %}
+                <td class="text-center">
+                    <div class="dropdown">
+
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Options
+                        </button>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                            {% if document.url %}
+                                <a class="dropdown-item" href="{% url 'open_url' document.file_id %}">Go to file</a>
+                            {% else %}
+                                <a class="dropdown-item"
+                                   href="{% url 'download_document' document.file_id %}">Download</a>
+                            {% endif %}
+
+                            {% if request.user.is_staff %}
+                                <a class="dropdown-item" href="{% url 'change_permissions' document.file_id %}"
+                                   onclick="clicked(event)">Change permissions</a>
+                            {% endif %}
+
+                            <a class="dropdown-item" href="{% url 'delete_document' document.file_id %}"
+                               onclick="clicked(event)">Delete</a>
+
+                        </div>
+
+                        <!-- {% comment %}
+                            {% include 'partials/document/document_delete_modal.html' %}
+                            {% endcomment %} -->
+
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+
+</table>

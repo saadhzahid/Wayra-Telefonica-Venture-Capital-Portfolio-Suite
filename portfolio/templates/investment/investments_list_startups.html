@@ -1,0 +1,32 @@
+<div class="container-fluid pt-3">
+    <h2>Investments</h2>
+    <div class="px-5 pt-3 pb-2 mb-4 rounded-3">
+        <table class="table table-hover">
+            <thead>
+            <th>Start ups</th>
+            <th>Type Of Founding Rounds</th>
+            <th>Investment Amount</th>
+            <th>Date Invested</th>
+            <th>Date Exit</th>
+            <th>Actions</th>
+            </thead>
+            <tbody>
+            {% for investment in investments %}
+                <tr>
+                    <td>{{ investment.startup.parent_company.name }}</td>
+                    <td>{{ investment.typeOfFoundingRounds }}</td>
+                    <td>{{ investment.investmentAmount }}</td>
+                    <td>{{ investment.dateInvested }}</td>
+                    <td>{{ investment.dateExit }}</td>
+                    <td>
+                        <a href="{% url 'investment_update' investment.id %}" class="btn btn-sm btn-primary">Update</a>
+                        <a href="{% url 'contract_right_list' investment.id%}" class="btn btn-sm btn-primary">Update rights</a>
+                        <a href="{% url 'investment_delete' investment.id %}" class="btn btn-sm btn-primary">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% include 'partials/utilities/pagination.html' with page=page_obj %}
+    </div>
+</div>

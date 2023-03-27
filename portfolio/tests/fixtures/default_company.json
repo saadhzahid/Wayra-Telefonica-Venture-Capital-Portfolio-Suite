@@ -1,0 +1,15 @@
+[
+  {
+    "model": "portfolio.company",
+    "pk": 1,
+    "fields": {
+      "name": "Default 1 Ltd",
+      "company_registration_number": "00000001",
+      "trading_names": "D1_LTD",
+      "previous_names": "Ante 1 LTD",
+      "registered_address": "Strand, London WC2R 2LS",
+      "jurisdiction": "United Kingdom",
+      "incorporation_date": "2023-02-16"
+    }
+  }
+]

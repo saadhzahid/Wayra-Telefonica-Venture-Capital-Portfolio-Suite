@@ -1,0 +1,50 @@
+{% load static %}
+<div class="container-fluid pe-5">
+    <div class="row pe-5 me-5">
+        <div class="col-xl-7 mx-5 w-100 pe-5">
+            <!-- Profile picture -->
+            <div class="card border my-4 w-100 rounded-3">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <div class="d-flex align-items-center">
+                                <a class="avatar avatar-lg bg-warning rounded-circle text-white">
+                                    {% if user.profile_picture %}
+                                        <img alt="..."
+                                             src="{{ user.profile_picture.url }}"
+                                             class="rounded-circle"
+                                             style="width: 100px; height: 100px"
+                                        >
+                                    {% else %}
+                                        <!-- <i class="fas fa-fw fa-user rounded-circle fa-5x pt-1 bg-secondary" style="width: 100px; height: 100px"></i> -->
+                                        <img alt="..."
+                                             src="{% static 'images/default_profile_picture.jpeg' %}"
+                                             class="rounded-circle"
+                                             style="width: 100px; height: 100px"
+                                        >
+                                    {% endif %}
+                                </a>
+                                <div class="ms-4">
+                                    <span class="h4 d-block mb-0">{{ user.first_name }} {{ user.last_name }}</span>
+                                    <a href="#" class="text-sm font-semibold text-muted">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ms-auto">
+                            <!-- <button type="button" class="btn btn-primary">Upload</button> -->
+                            <form class="mb-2" action="{% url 'upload_profile_picture' %}" method="post"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% include 'partials/utilities/settings_form_input.html' with field=form.profile_picture %}
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                                <a type="button" class="btn btn-danger"
+                                   href="{% url 'remove_profile_picture' %}">Remove</a>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="table-responsive mt-5">
+    <table class="table table-hover align-middle mb-0 bg-white pb-2">
+        <thead class="">
+        <tr>
+            <th>Name</th>
+            <th>CRN</th>
+            <th>Registered Address</th>
+            <th>Jurisdiction</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cell in companies %}
+            {% include 'partials/company/company_table_cell.html' with company=cell %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% include 'partials/utilities/pagination.html' with page=companies %}
+</div>

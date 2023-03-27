@@ -1,0 +1,33 @@
+<div class="col col-md-6 col-lg-6 col-xl-6 py-2">
+    <a href="{% url 'individual_profile' individual.id %}" class="text-reset text-decoration-none">
+        <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4">
+                <div class="d-flex text-black">
+                    <div class="flex-shrink-0">
+                        <div class="individual-card-avatar " style="width: 180px; height: 180px"></div>
+                        
+                    </div>
+                    <div class="flex-grow-1 ms-3 text-center">
+                        {% load util %}
+                        {% if individual|is_founder_and_investor %}
+                            <h4 class="mb-1">Founder/Investor </h4>
+                        {% elif individual|is_founder %}
+                            <h4 class="mb-1">Founder </h4>
+                        {% elif individual|is_investor %}
+                            <h4 class="mb-1">Investor </h4>
+                        {% else %}
+                            <h4 class="mb-1">Individual</h4>
+                        {% endif %}
+                        <h5 class="mb-1">
+                            {{ individual.name }}
+                        </h5>
+                        <h7>{{ individual.Position }}</h7>
+                        <div class="container-fluid pt-4 align-items-center ">
+                            {% include 'partials/individual/individual_contact_button.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

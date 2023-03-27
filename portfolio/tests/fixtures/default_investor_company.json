@@ -1,0 +1,9 @@
+[
+  {
+    "model": "portfolio.investor",
+    "pk": 4,
+    "fields": {
+      "company": 1
+    }
+  }
+]

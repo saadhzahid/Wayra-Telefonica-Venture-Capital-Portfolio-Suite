@@ -1,0 +1,8 @@
+<div class="container-fluid px-0">
+    <div class="row my-4">
+        {% for programme in programmes %}
+            {% include 'programmes/programme/programme_card.html' %}
+        {% endfor %}
+    </div>
+    {% include 'partials/utilities/pagination.html' with page=page_obj %}
+</div>

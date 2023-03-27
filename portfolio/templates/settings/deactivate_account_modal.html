@@ -1,0 +1,22 @@
+<div class="modal fade" id="deactivateAccountModal" tabindex="-1" role="dialog"
+     aria-labelledby="deactivateAccountModalModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="deactivateAccountModalModalLabel">Warning</h5>
+                <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Are you sure you want to deactivate your account?</strong></p>
+                <p>Deactivating your account will permanently delete all of your data and cannot be undone. You will no
+                    longer have any access to the system unless a brand new account is issued to you.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a type="button" class="btn btn-danger" href="{% url 'deactivate_account' %}">Deactivate</a>
+            </div>
+        </div>
+    </div>
+</div>

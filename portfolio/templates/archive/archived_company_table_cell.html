@@ -1,0 +1,41 @@
+{% load static %}
+<tr>
+    <td class="clickable-cell" data-href="{% url 'portfolio_company' company.id %}">
+        <div class="d-flex align-items-center">
+            <div class="company-details-avatar " style="width: 45px; height: 45px"></div>
+
+            <div class="ms-3">
+                <p class="fw-bold mb-1">{{ company.name }}</p>
+            </div>
+        </div>
+    </td>
+    <td class="clickable-cell" data-href="{% url 'portfolio_company' company.id %}">
+        <p class="fw-normal mb-1">{{ company.company_registration_number }}</p>
+    </td>
+    <td class="clickable-cell" data-href="{% url 'portfolio_company' company.id %}">
+        <span class="fw-normal mb-1">{{ company.registered_address }}</span>
+    </td>
+    <td class="clickable-cell" data-href="{% url 'portfolio_company' company.id %}">
+        {{ company.jurisdiction }}
+    </td>
+    <td>
+        <a type="button" class="btn btn-light btn-sm btn-rounded text-success"
+           href="{% url 'unarchive_company' company.id %}">
+            <i class="fa-sharp fa-solid fa-inbox"></i>
+            Unarchive
+        </a>
+    </td>
+</tr>
+
+
+<script>
+    var cells = document.querySelectorAll('.clickable-cell');
+
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].onclick = function () {
+            var href = this.getAttribute('data-href');
+            window.location.href = href;
+        }
+    }
+
+</script>

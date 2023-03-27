@@ -1,0 +1,14 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+    {% load static %}
+
+
+    <h1>Delete Contract Right</h1>
+    <p class="individual_delete">Are you sure you want to delete this contract right?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Submit" class="btn btn-primary">
+        <a href="{% url 'contract_right_list' investment_id %}" class="btn btn-secondary">Cancel</a>
+    </form>
+
+{% endblock %}

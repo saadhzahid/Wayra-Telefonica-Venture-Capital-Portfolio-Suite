@@ -1,0 +1,55 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+    <div class="container mt-2 ">
+        <h2 class="pb-3">User</h2>
+        <div class="col-12 d-flex justify-content-end">
+            <div class="btn-group mt-3 ">
+                <a href="{% url 'permission_group_list' %}" class="btn btn-sm btn-outline-primary">Switch to Groups</a>
+                <a href="{% url 'permission_create_user' %}" class="btn btn-sm btn-outline-primary">Create User</a>
+            </div>
+        </div>
+        <div>
+            <table class="mt-1 table table-hover">
+                <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Groups</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>
+                            {% if user.groups.all %}
+                                <div>
+
+                                    {% if user.groups.all|length > 1 %}
+                                        <span>{{ user.groups.first.name }},</span>
+                                    {% else %}
+                                        <span>{{ user.groups.first.name }}</span>
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                None
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'permission_edit_user' id=user.id %}" class="btn btn-primary">Update</a>
+                            <a type="button" class="btn btn-success"
+                               href="{% url 'permission_reset_password' user.id %}">Reset Password</a>
+                            <a href="{% url 'permission_delete_user' id=user.id %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+            {% include 'partials/utilities/pagination.html' with page=page_obj %}
+        </div>
+    </div>
+{% endblock %}

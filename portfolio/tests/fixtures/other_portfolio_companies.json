@@ -1,0 +1,39 @@
+[
+  {
+    "model": "portfolio.company",
+    "pk": 301,
+    "fields": {
+      "name": "Child 301 Ltd",
+      "incorporation_date": "2023-02-17",
+      "company_registration_number": "00000301",
+      "trading_names": "D301_ltd",
+      "previous_names": "Ante301 LTD",
+      "registered_address": "Strand, London WC2R 2LS",
+      "jurisdiction": "United Kingdom"
+    }
+  },
+  {
+    "model": "portfolio.portfolio_company",
+    "pk": 301,
+    "fields": {
+      "parent_company": 301,
+      "wayra_number": "WN-301"
+    }
+  },
+  {
+    "model": "portfolio.company",
+    "pk": 3,
+    "fields": {
+      "name": "Child THREE Ltd",
+      "incorporation_date": "2023-02-17"
+    }
+  },
+  {
+    "model": "portfolio.portfolio_company",
+    "pk": 3,
+    "fields": {
+      "parent_company": 3,
+      "wayra_number": "WN-3"
+    }
+  }
+]

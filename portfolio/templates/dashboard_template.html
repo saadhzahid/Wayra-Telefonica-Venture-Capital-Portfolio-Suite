@@ -1,0 +1,85 @@
+{% extends 'base_content.html' %}
+{% load static %}
+
+{% block content %}
+    <header class="navbar navbar-dark bg-dark flex-md-nowrap px-2 shadow navbar-gradient">
+        <!-- <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"><img src="{% static 'images/wayra_logo.png' %}" alt="Wayra" class="wayra-logo img-fluid"></a> -->
+        <a href="{% url 'dashboard' %}" class="navbar-brand"><img src="{% static 'images/wayra_logo.png' %}" alt=""
+                                                                  class="wayra-logo"></a>
+
+        <button class="navbar-toggler position d-md-none collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="dropdown">
+            <div class="row nav-item text-nowrap">
+                {% include 'partials/utilities/profile_picture_dropdown.html' %}
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3 sidebar-sticky">
+                    <ul class="nav flex-column" id="navbar">
+
+                        <li class="nav-item py-1" id="navbaritems">
+                            <a class="nav-link active text-dark" aria-current="page" href="{% url 'dashboard' %}">
+                                <i class="fa-regular fa-building"></i>
+                                Companies
+                            </a>
+                        </li>
+                        <li class="nav-item py-1" id="navbaritems">
+                            <a class="nav-link text-dark" href="{% url 'individual_page' %}">
+                                <i class="fa-solid fa-person"></i>
+                                Individuals
+                            </a>
+                        </li>
+                        <li class="nav-item py-1" id="navbaritems">
+                            <a class="nav-link text-dark" href="{% url 'programme_list' %}">
+                                <i class="fa-solid fa-book"></i>
+                                Programmes
+                            </a>
+                        </li>
+                        <li class="nav-item py-1" id="navbaritems">
+                            <a class="nav-link text-dark" href="{% url 'account_settings' %}">
+                                <i class="fa-solid fa-gear"></i>
+                                Settings
+                            </a>
+                        </li>
+                        {% if request.user.is_staff %}
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase"
+                                id="navbaritems">
+                                <span>Admin</span>
+                            </h6>
+                            <li class="nav-item py-1" id="navbaritems">
+                                <a class="nav-link text-dark" href="{% url 'permission_user_list' %}">
+                                    <i class="fa-solid fa-person"></i>
+                                    User Permissions
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="{% url 'archive_page' %}">
+                                    <i class="fa-solid fa-box-archive"></i>
+                                    Archive
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="height:100%; min-height:100vh;">
+                {% block main %}
+
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+<div class="mt-5 pt-4">
+    <div class="p-2 mb-4 bg-light rounded mx-3">
+        <div class="container-fluid py-2">
+            <div class="row">
+                <div class="btn-group w-auto mb-auto">
+                    <h3 class="display-7 mb-2">Archived Individuals</h3>
+                    <button type="button" class="btn btn-sm dropdown-toggle ms-3" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-filter"></i>
+                        Filter
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" type="button" onclick="reload_archived_individuals(1)">All
+                        </button>
+                        <button class="dropdown-item" type="button" onclick="reload_archived_individuals(2)">Founders
+                        </button>
+                        <button class="dropdown-item" type="button" onclick="reload_archived_individuals(3)">Investors
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% include 'archive/archived_individual_table.html' with individuals=individuals %}
+            {% include 'partials/utilities/pagination.html' with page=individuals page_number=2 %}
+        </div>
+    </div>
+</div>

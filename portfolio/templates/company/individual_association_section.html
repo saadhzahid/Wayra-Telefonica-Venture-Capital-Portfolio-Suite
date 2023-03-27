@@ -1,0 +1,87 @@
+<div class="h-100 px-3 py-2 rounded-3">
+    <div class="pt-1 pb-3">
+        <h4>Founders</h4>
+        <div class="row mb-3 rounded p-3">
+            {% for founder in founders %}
+                {% include 'partials/utilities/individual.html' with individual=founder role="Founder" %}
+            {% endfor %}
+            <!-- Add founder card -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-0">
+                <div class="h-100 pb-3">
+                    <div class="individual-card mx-1 border h-100 d-flex align-items-center text-center">
+                        <div class="w-100 h-auto text-center">
+                            <div class=" row individual-card-info text-center">
+                                <a class="individual-card-title text-decoration-none w-auto" href="{% url 'founder_create' %}" style="font-size: xx-large;">+</a>
+                                <div class="individual-card-subtitle w-auto">Add Founder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="pt-1 pb-3">
+        <h4>Investors</h4>
+        <div class="row mb-3 rounded p-3">
+            {% if not individual_investors and not company_investors %}
+                <!-- Add Investor card -->
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-0">
+                    <div class="h-100 pb-3" style="min-height: 14rem;">
+                        <div class="individual-card mx-1 border h-100 d-flex align-items-center text-center">
+                            <div class="w-100 h-auto text-center">
+                                <div class=" row individual-card-info text-center">
+                                    <a class="individual-card-title text-decoration-none w-auto" href="{% url 'investment_create' company.id %}" style="font-size: xx-large;">+</a>
+                                    <div class="individual-card-subtitle w-auto">Add Investor</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                {% for investor in individual_investors %}
+                    {% include 'partials/utilities/individual.html' with individual=investor role="Investor" %}
+                {% endfor %}
+                {% for investor in company_investors %}
+                    {% include 'partials/utilities/individual.html' with individual=investor role="Investor" %}
+                {% endfor %}
+                <!-- Add Investor card -->
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-0">
+                    <div class="h-100 pb-3">
+                        <div class="individual-card mx-1 border h-100 d-flex align-items-center text-center">
+                            <div class="w-100 h-auto text-center">
+                                <div class=" row individual-card-info text-center">
+                                    <a class="individual-card-title text-decoration-none w-auto" href="{% url 'investment_create' company.id %}" style="font-size: xx-large;">+</a>
+                                    <div class="individual-card-subtitle w-auto">Add Investor</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            
+        </div>
+    </div>
+    <div class="pt-1 pb-3">
+        <h4>Coaches/Mentors</h4>
+        <div class="row mb-3 rounded p-3 justify-content-between">
+            {% if coaches_mentors %}
+                {% for coach in coaches_mentors %}
+                    {% include 'partials/utilities/individual.html' with individual=coach role="Coach" %}
+                {% endfor %}
+            {% else %}
+            <div class="w-100 mb-0">
+                <div class="h-100 pb-3" style="min-height: 14rem;">
+                    <div class="mx-1 h-100 d-flex align-items-center text-center">
+                        <div class="w-100 h-auto text-center">
+                            <div class=" row individual-card-info text-center">
+                                <div class="individual-card-subtitle w-auto">There are currently no coaches or mentors assigned to this Company</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

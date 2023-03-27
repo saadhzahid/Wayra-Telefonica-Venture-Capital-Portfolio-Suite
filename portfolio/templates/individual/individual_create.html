@@ -1,0 +1,26 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+    <h1>Create individual</h1>
+    <p><p></p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {#        {{ individualForm.as_p }}#}
+        {##}
+        {#        {{ addressForms.as_p }}#}
+        {#        {% for form in pastExperienceForms %}#}
+        {#            {{ form.as_p }}#}
+        {#        {% endfor %}#}
+        <div class="col-6">
+            {% include 'partials/utilities/bootstrap_form.html' with form=individualForm %}
+            {% include 'partials/utilities/bootstrap_form.html' with form=addressForms %}
+            {% for form in pastExperienceForms %}
+                {% include 'partials/utilities/bootstrap_form.html' with form=form %}
+            {% endfor %}
+        </div>
+
+
+        <input type="submit" value="Update" class="btn btn-primary">
+    </form>
+
+{% endblock %}

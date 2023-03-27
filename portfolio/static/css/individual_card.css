@@ -1,0 +1,318 @@
+.individual-card {
+    background: #ffffff;
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+    transition: box-shadow .3s ease, transform .2s ease;
+   }
+   
+.individual-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform .2s ease, opacity .2s ease;
+}
+
+/*Image*/
+.individual-card-avatar {
+    --size: 60px;
+    background: linear-gradient(to top, #f1e1c1 0%, #fcbc97 100%);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    transition: transform .2s ease;
+    margin-bottom: 1rem;
+}
+
+.company-details-avatar {
+    --size: 40px;
+    background: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    transition: transform .2s ease;
+    margin-bottom: 1rem;
+}
+
+
+/*individual-card footer*/
+.individual-card-social {
+    transform: translateY(200%);
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    opacity: 0;
+    transition: transform .2s ease, opacity .2s ease;
+}
+
+.individual-card-social__item {
+    list-style: none;
+}
+
+.individual-card-social__item a {
+    display: block;
+    height: 18px;
+    width: 18px;
+    fill: #515F65;
+    cursor: pointer;
+    transition: fill 0.2s ease ,transform 0.2s ease;
+}
+
+/*Text*/
+.individual-card-title {
+    color: #333;
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 2rem;
+}
+
+.individual-card-subtitle {
+    color: #859ba8;
+    font-size: 0.8em;
+}
+
+/* Pills */
+.nav-item .nav-link{
+    color: #191825;
+}
+
+.nav-pills .nav-item .active{
+    background-color: #ffffff;
+    color: #72afd3;
+    border:solid 1px #72afd3;
+}
+
+/*Hover*/
+.individual-card:hover {
+    box-shadow: 0 5px 10px #23232333;
+}
+
+.individual-card:hover .individual-card-info {
+    transform: translateY(-5%);
+}
+
+.individual-card:hover .individual-card-social {
+    transform: translateY(100%);
+    opacity: 1;
+}
+
+.individual-card-social__item a:hover {
+    fill: #232323;
+    transform: scale(1.1);
+}
+
+.individual-card-avatar:hover {
+    transform: scale(1.1);
+}
+
+.individual-card-title:hover {
+    color: #7468f7;
+}
+
+/* Download button */
+.download-button {
+    position: relative;
+    border-width: 0;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    z-index: 1;
+    display: inline-block;
+    width: 7.5rem;
+}
+
+.download-button .docs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 40px;
+    padding: 0 10px;
+    border-radius: 4px;
+    z-index: 1;
+    background-color: #242a35;
+    border: solid 1px #e8e8e82d;
+    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.download-button:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.download {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    z-index: -1;
+    border-radius: 4px;
+    transform: translateY(0%);
+    background-color: #37ecba;
+    border: solid 1px #01e0572d;
+    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.download-button:hover .download {
+    transform: translateY(100%)
+}
+
+.download svg polyline,.download svg line {
+    animation: docs 1s infinite;
+}
+
+@keyframes docs {
+    0% {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(-15%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+/* View button */
+.view_button {
+    font-family: inherit;
+    font-size: 20px;
+    background: #37ecba;
+    color: white;
+    padding: 0.4em 0.4em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.2s;
+    width: 7.5rem;
+  }
+  
+  .view_button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .view_button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .view_button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  
+  .view_button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+  }
+  
+  .view_button:hover span {
+    transform: translateX(5em);
+  }
+  
+  .view_button:active {
+    transform: scale(0.95);
+  }
+
+  
+  @keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
+   
+/* Modal footer butttons */
+.delete_document_button {
+    background-color: #FC2947;
+    color: #ffffff;
+}
+
+.delete_document_button:hover {
+    background-color: #DF2E38;
+    color:#ffffff;
+}
+
+.change_permissions_button {
+    background-color: #00FFAB;
+    color: #ffffff;
+}
+
+.change_permissions_button:hover {
+    background-color: #62B6B7;
+    color: #ffffff;
+}
+
+/* Individual page links */
+.link_button {
+    --primary-color: #125B50;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+    /* display: inline-block; */
+    width: 6rem;
+  }
+  
+  .link_button .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .link_button .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+  
+  .link_button .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+  
+  .link_button:hover {
+    background-color: var(--hover-color);
+  }
+  
+  .link_button:hover .arrow {
+    background: var(--secondary-color);
+  }
+  
+  .link_button:hover .arrow:before {
+    right: 0;
+  }

@@ -1,0 +1,38 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+    <div class="container mt-2 ">
+        <h2 class="pb-3">Groups</h2>
+        <div class="col-12 d-flex justify-content-end">
+            <div class="btn-group mt-3 ">
+                <a href="{% url 'permission_user_list' %}" class="btn btn-sm btn-outline-primary">Switch to Users</a>
+                <a href="{% url 'permission_create_group' %}" class="btn btn-sm btn-outline-primary">Create Group</a>
+            </div>
+        </div>
+        <div>
+            <table class="mt-1 table table-hover">
+                <thead>
+                <th>Group</th>
+                <th>Permissions</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+                {% for group in groups %}
+                    <tr>
+                        <td>{{ group.name }}</td>
+                        <td>
+                            {% for permission in group.permissions.all %}
+                                <span>{{ permission.name }},</span>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href="{% url 'permission_edit_group' id=group.id %}" class="btn btn-primary">Update</a>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+            {% include 'partials/utilities/pagination.html' with page=page_obj %}
+        </div>
+    </div>
+{% endblock %}

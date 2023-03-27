@@ -1,0 +1,61 @@
+{% extends 'dashboard_template.html' %}
+{% load static %}
+{% block main %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 border-bottom">
+        <h1 class="h2">Archive</h1>
+        <!-- Nav -->
+        <ul id="tabs" class="nav nav-tabs pb-0 mt-auto overflow-x border-0">
+            <li class="nav-item"><a data-target="#all-files" data-toggle="tab"
+                                    class="nav-link active font-regular text-dark" onclick="">All Files</a></li>
+            <li class="nav-item"><a data-target="#companies" data-toggle="tab" class="nav-link font-regular text-dark"
+                                    onclick="">Companies</a></li>
+            <li class="nav-item"><a data-target="#individuals" data-toggle="tab" class="nav-link font-regular text-dark"
+                                    onclick="">Individuals</a></li>
+        </ul>
+    </div>
+
+    <div id="tabsContent" class="tab-content">
+        <div id="all-files" class="tab-pane fade active show">
+
+            {% include 'archive/archived_search_functionality.html' %}
+
+            <div class="companies-table">
+                {% include 'archive/archived_companies_table.html' %}
+            </div>
+
+            <div class="individuals-table">
+                {% include 'archive/archived_individuals_table.html' %}
+            </div>
+
+        </div>
+        <div id="companies" class="tab-pane fade">
+
+            {% include 'archive/archived_search_functionality.html' %}
+
+            <div class="companies-table">
+                {% include 'archive/archived_companies_table.html' %}
+            </div>
+
+        </div>
+        <div id="individuals" class="tab-pane fade">
+
+            {% include 'archive/archived_search_functionality.html' %}
+
+            <div class="individuals-table">
+                {% include 'archive/archived_individuals_table.html' %}
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Ajax function call -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        var filter_companies_url = "{% url 'change_archived_company_filter' %}";
+        var filter_individuals_url = "{% url 'change_archived_individual_filter' %}";
+    </script>
+
+    <script src="{% static 'js/archive_async.js' %}"></script>
+
+{% endblock %}

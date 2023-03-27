@@ -1,0 +1,103 @@
+<div class="modal fade rounded" id="exampleModalCenter{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content px-3">
+            <div class="row">
+                <div class="file-icon file-icon-xl p-3 me-auto ms-5 my-3" data-type="{{ document.file_type }}"></div>
+                <div class="col align-items-center text-center me-auto mt-auto mb-auto">
+                    {% if not document.url %}
+                    <a class="download-button mt-3 text-decoration-none text-white" href="{% url 'download_document' document.file_id %}">
+                        <div class="docs">
+                            <i class="fa-regular fa-file"></i>
+                            Download
+                        </div>
+                        <div class="download w-auto">
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="view_button ms-auto me-auto text-decoration-none text-white" href="{% url 'open_url' document.file_id %}">
+                        <div class="svg-wrapper-1">
+                            <div class="svg-wrapper">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z" fill="currentColor"></path>
+                            </svg>
+                            </div>
+                        </div>
+                        <span>View</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            <ul class="list-group list-group-flush border-0 rounded-3">
+                <li class="list-group-item mb-2 mt-2">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h7 class="text-secondary">Document</h7 class="text-secondary">
+                                <h5>{{ document.file_name }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item mb-2">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h7 class="text-secondary">File Type</h7 class="text-secondary">
+                                <h5>{{ document.file_type }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item mb-2">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h7 class="text-secondary">File Size</h7 class="text-secondary">
+                                <h5>{{ document.file_size }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item mb-2">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h7 class="text-secondary">Updated At</h7 class="text-secondary">
+                                <h5>{{ document.updated_at }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% if request.user.is_staff %}
+                <li class="list-group-item mt-2">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h7 class="text-secondary">Permissions</h7 class="text-secondary">
+                                <h5>
+                                    {% if document.is_private %}
+                                        Staff Only
+                                    {% else %}
+                                        Public
+                                    {% endif %}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+            </ul>
+            <div class="modal-footer">
+                {% if request.user.is_staff %}
+                <a type="button" class="btn change_permissions_button" href="{% url 'change_permissions' document.file_id %}" onclick="clicked(event)">Change Permissions</a>
+                {% endif %}
+                <button type="button" class="btn delete_document_button" href="{% url 'delete_document' document.file_id %}" onclick="clicked(event)">Delete</button>
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="exampleModalCenter{{id}}">Close</button> -->
+            </div>
+        </div>
+       
+    </div>
+</div>

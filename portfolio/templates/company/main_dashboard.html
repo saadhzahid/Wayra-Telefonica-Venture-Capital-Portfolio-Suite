@@ -1,0 +1,57 @@
+{% extends 'dashboard_template.html' %}
+{% load static %}
+{% block main %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+
+        <div class="btn-group">
+          <a type="button" class="btn btn-outline-secondary" href="{% url 'create_company' %}">Create</a>
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+          </button>
+          <div class="dropdown-menu dropdown-menu-right p-0">
+            <a class="btn btn-outline-secondary" href="{% url 'investor_company_create' %}">Assign Investor Company</a>
+            <a class="btn btn-outline-secondary" href="{% url 'portfolio_company_create' %}">Assign Portfolio Company</a>
+          </div>
+        </div>
+
+        <!-- <div class="btn-toolbar">
+            <div class="btn btn-group me-1">
+                <a href="{% url 'investor_company_create' %}" class="btn btn-sm btn-outline-primary"> Assign investor
+                    company</a>
+                <a href="{% url 'portfolio_company_create' %}" class="btn btn-sm btn-outline-primary"> Assign Portfolio
+                    company</a>
+            </div>
+        </div> -->
+        <!-- Nav -->
+        <ul id="tabs" class="nav nav-tabs pb-0 mt-auto overflow-x border-0">
+          <li class="nav-item"><a data-target="#all-companies" data-toggle="tab" class="nav-link active font-regular text-dark" onclick="reload_companies(1, '#all-companies')">All Companies</a></li>
+          <li class="nav-item"><a data-target="#portfolio" data-toggle="tab" class="nav-link font-regular text-dark" onclick="reload_companies(2, '#portfolio')">Portfolio</a></li>
+          <li class="nav-item"><a data-target="#investors" data-toggle="tab" class="nav-link font-regular text-dark" onclick="reload_companies(3, '#investors')">Investors</a></li>
+        </ul>
+    </div>
+
+    <div id="tabsContent" class="tab-content">
+        <div id="all-companies" class="tab-pane fade active show">
+            {% include 'company/company_dashboard_content_reusable.html' with companies=companies %}
+        </div>
+        <div id="portfolio" class="tab-pane fade">
+            {% include 'company/company_dashboard_content_reusable.html' with companies=companies %}
+        </div>
+        <div id="investors" class="tab-pane fade">
+            {% include 'company/company_dashboard_content_reusable.html' with companies=companies %}
+        </div>
+    </div>
+
+    <!-- Ajax function call -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        var filter_search_url = "{% url 'change_company_filter' %}";
+        var layout_search_url = "{% url 'change_company_layout' %}";
+        var active_tab = "#all-companies";
+    </script>
+
+    <script src="{% static 'js/companies_async.js' %}"></script>
+
+{% endblock %}

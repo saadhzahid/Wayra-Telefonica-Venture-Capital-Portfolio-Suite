@@ -1,0 +1,10 @@
+{% load static %}
+<a class="list-group-item list-group-item-action" href="{% url destination_url result.id %}">
+    <div class="d-flex align-items-center">
+        <img src="{% static 'images/wayra_logo.png' %}" alt="" style="height: 30px"
+             class="rounded"/>
+        <div class="ms-3">
+            <span>{{ result.name }}</span>
+        </div>
+    </div>
+</a>

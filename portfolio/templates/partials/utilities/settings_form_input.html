@@ -1,0 +1,26 @@
+{% load widget_tweaks %}
+
+<div class="mb-3">
+    {{ field.label_tag }}
+    {% if form.is_bound %}
+        {% if field.errors %}
+            <label for="{{ field.id_for_label }} " class="form-label">{{ form.name.label_tag }} *</label>
+            <input type="{{ field.field.widget.input_type }}" class="form-control is-invalid"
+                   id="{{ field.id_for_label }} " name="{{ field.html_name }}" value="{{ value }}">
+        {% else %}
+            <label for="{{ field.id_for_label }} " class="form-label">{{ form.name.label_tag }} *</label>
+            <input type="{{ field.field.widget.input_type }}" class="form-control is-valid"
+                   id="{{ field.id_for_label }} " name="{{ field.html_name }}" value="{{ value }}">
+        {% endif %}
+    {% else %}
+        <label for="{{ field.id_for_label }} " class="form-label">{{ field.name.label_tag }} *</label>
+        <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }} "
+               name="{{ field.html_name }}" value="{{ value }}">
+    {% endif %}
+    <div class="valid-feedback">
+        Looks good!
+    </div>
+    <div class="invalid-feedback">
+        {{ field.errors }}
+    </div>
+</div>

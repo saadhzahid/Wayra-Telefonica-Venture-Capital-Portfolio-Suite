@@ -1,0 +1,10 @@
+[
+  {
+    "model": "portfolio.Founder",
+    "pk": 2,
+    "fields": {
+      "companyFounded": 201,
+      "individualFounder": 5
+    }
+  }
+]

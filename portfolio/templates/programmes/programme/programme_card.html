@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="col-xl-4 col-md-6 mb-2" id="programcard">
+    <a href="{% url 'programme_detail' programme.id %}" class="text-reset text-decoration-none">
+
+        <div class="card h-100 p-3">
+            <div class="d-flex w-30 justify-content-between mb-2 align-items-center">
+                <div>
+                    <div>Programme</div>
+                    <div class="d-flex align-items-baseline align-items-baseline">
+
+                        <h5 class="mr-1">{{ programme.name }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item mb-2 mt-2">
+                    <h6>Cohorts</h6>
+                    <h7>{{ programme.cohort }}</h7>
+                </li>
+                <li class="list-group-item my-2">
+                    <div class="col">
+                        <h6>Partners</h6>
+                        {% for partner in programme.partners.all %}
+                            <h7>{{ partner.name }}</h7>
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="list-group-item my-2">
+                    <h6>Coaches and Mentors</h6>
+                    {% for coach in programme.coaches_mentors.all %}
+                        <h7>{{ coach.name }}</h7>
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    </a>
+</div>
+

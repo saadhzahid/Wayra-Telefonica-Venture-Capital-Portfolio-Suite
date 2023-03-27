@@ -1,0 +1,186 @@
+<div class="container-fluid pt-2">
+    <h3>Details</h3>
+    <div class="w-100 p-2">
+        <ul class="list-group list-group-flush border rounded-3">
+            <li class="list-group-item mb-2 mt-2">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="company-details-avatar me-3"></div>
+                        <div class="col">
+                            <h7 class="text-secondary">Company Name</h7 class="text-secondary">
+                            <h5>{{ company.name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% if company.wayra_number %}
+            <li class="list-group-item my-2">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="company-details-avatar me-3"></div>
+                        <div class="col">
+                            <h7 class="text-secondary">Wayra ID</h7 class="text-secondary">
+                            <h5>{{ company.wayra_number }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            <li class="list-group-item my-2">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="company-details-avatar me-3"></div>
+                        <div class="col">
+                            <h7 class="text-secondary">Company Registration Number(CRN)</h7 class="text-secondary">
+                            <h5>{{ company.company_registration_number }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item my-2">
+                <div class="col">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="company-details-avatar me-3"></div>
+                            <div class="col">
+                                <h7 class="text-secondary">Jurisdiction</h7 class="text-secondary">
+                                <h5>{{ company.jurisdiction }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item my-2">
+                <div class="col">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="company-details-avatar me-3"></div>
+                            <div class="col">
+                                <h7 class="text-secondary">Trading Names</h7 class="text-secondary">
+                                <h5>{{ company.trading_names }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item my-2">
+                <div class="col">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="company-details-avatar me-3"></div>
+                            <div class="col">
+                                <h7 class="text-secondary">Previous Names</h7 class="text-secondary">
+                                <h5>{{ company.previous_names }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item my-2">
+                <div class="col">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="company-details-avatar"></div>
+                            <div class="col">
+                                <h7 class="text-secondary">Registered Address</h7 class="text-secondary">
+                                <h5>{{ company.registered_address }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+
+    <!-- <div class="container-fluid">
+
+        <div class="row mb-3">
+
+            <div class="col-md-6 col-xl-4 mb-2 py-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6 w-100">
+                                <h7 class="text-secondary" class="text-muted fw-normal mt-0 text-wrap" title="Active Projects">Company Name</h7 class="text-secondary">
+                                <h3 class="my-2 py-1">{{ company.name }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-4 mb-2 py-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6 w-100">
+                                <h7 class="text-secondary" class="text-muted fw-normal mt-0 text-wrap w-100" title="Active Projects">Company Registration Number(CRN)</h7 class="text-secondary">
+                                <h3 class="my-2 py-1">{{ company.company_registration_number }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-4 mb-2 py-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6 w-100">
+                                <h7 class="text-secondary" class="text-muted fw-normal mt-0 text-wrap" title="Active Projects">Jurisdiction</h7 class="text-secondary">
+                                <h3 class="my-2 py-1">{{ company.jurisdiction }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mb-3">
+
+            <div class="col-md-6 col-xl-4 mb-2 py-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6 w-100">
+                                <h7 class="text-secondary" class="text-muted fw-normal mt-0 text-wrap" title="Active Projects">Trading Names</h7 class="text-secondary">
+                                <h3 class="my-2 py-1">{{ company.trading_names }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-4 mb-2 py-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6 w-100">
+                                <h7 class="text-secondary" class="text-muted fw-normal mt-0 text-wrap" title="Active Projects">Previous Names</h7 class="text-secondary">
+                                <h3 class="my-2 py-1">{{ company.previous_names }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-4 mb-2 py-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6 w-100">
+                                <h7 class="text-secondary" class="text-muted fw-normal mt-0 text-wrap" title="Active Projects">Registered Address</h7 class="text-secondary">
+                                <h3 class="my-2 py-1">{{ company.registered_address }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div> -->
+
+</div>

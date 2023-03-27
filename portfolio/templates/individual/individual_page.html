@@ -1,0 +1,52 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+    {% load static %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 border-bottom">
+        <h1 class="h2">Individual</h1>
+
+        <div class="btn-group">
+          <a type="button" class="btn btn-outline-secondary" href="{% url 'individual_create' %}">Create</a>
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+          </button>
+          <div class="dropdown-menu dropdown-menu-right p-0">
+            <a class="btn btn-outline-secondary w-100" href="{% url 'founder_create' %}">Create Founder</a>
+            <a class="btn btn-outline-secondary w-100" href="{% url 'investor_individual_create' %}">Create Investor</a>
+          </div>
+        </div>
+        <!-- Nav -->
+        <ul id="tabs" class="nav nav-tabs pb-0 mt-auto overflow-x border-0">
+            <li class="nav-item"><a data-target="#all-individuals" data-toggle="tab"
+                                    class="nav-link active font-regular text-dark"
+                                    onclick="reload_individuals(1, '#all-individuals')">All Individuals</a></li>
+            <li class="nav-item"><a data-target="#founders" data-toggle="tab" class="nav-link font-regular text-dark"
+                                    onclick="reload_individuals(2, '#founders')">Founders</a></li>
+            <li class="nav-item"><a data-target="#investors" data-toggle="tab" class="nav-link font-regular text-dark"
+                                    onclick="reload_individuals(3, '#investors')">Investors</a></li>
+        </ul>
+    </div>
+
+    <div id="tabsContent" class="tab-content">
+        <div id="all-individuals" class="tab-pane fade active show">
+            {% include 'individual/individual_page_content_reusable.html' with individuals=individuals %}
+        </div>
+        <div id="founders" class="tab-pane fade">
+            {% include 'individual/individual_page_content_reusable.html' with individuals=individuals %}
+        </div>
+        <div id="investors" class="tab-pane fade">
+            {% include 'individual/individual_page_content_reusable.html' with individuals=individuals %}
+        </div>
+    </div>
+
+    <!-- Ajax function call -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        var filter_search_url = "{% url 'change_individual_filter' %}";
+        var layout_search_url = "{% url 'change_individual_layout' %}";
+        var active_tab = "#all-individuals";
+    </script>
+
+    <script src="{% static 'js/individuals_async.js' %}"></script>
+
+{% endblock %}

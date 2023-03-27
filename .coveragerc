@@ -1,0 +1,3 @@
+[run]
+    branch=True
+    omit=*/tests/*,*/__init__.py,*/migrations/*,*/seeders/*,*/settings.py,*/admin.py,*/urls.py,*/apps.py,*/manage.py, */mixins.py

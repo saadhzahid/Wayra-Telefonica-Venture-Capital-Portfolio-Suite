@@ -1,0 +1,124 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+
+    <div class="px-5 py-2 rounded-3">
+
+        <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+
+            <div class="col">
+                <p>Telefonica Innovations</p>
+                <h2 class="pb-3">{{ programme.name }}</h2>
+            </div>
+
+            <div class="btn-group me-1">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'programme_document_upload' id %}" class="btn btn-sm btn-outline-primary">Upload a
+                        document</a>
+                {% endif %}
+            </div>
+
+            <div class="btn-group me-2">
+                <a href="{% url 'programme_update' id=id %}" class="btn btn-sm btn-outline-primary"> Update
+                    Programme</a>
+                <a href="{% url 'programme_delete' id=id %}" class="btn btn-sm btn-outline-danger"> Delete Programme</a>
+            </div>
+
+        </div>
+
+        <div class="container-fluid py-3">
+            <div class="row mb-3">
+                {% include 'partials/utilities/programme_card.html' with programme=programme %}
+            </div>
+        </div>
+
+
+        <!-- <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+                <div class="container-fluid pt-2">
+                    <h5>Details</h5>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item my-2">
+                            <h6>Cohort</h6>
+                            <h7>{{ programme.cohort }}</h7>
+                        </li>
+                        <li class="list-group-item my-2">
+                            <div class="col">
+                                <h6>Partners</h6>
+                                {% for partner in partners %}
+                                    <h7>{{ partner.name }}</h7>
+                                {% endfor %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="container-fluid">
+            <h5>Details</h5>
+            <div class="row mb-3">
+
+                <div class="col-md-6 col-xl-6 mb-2 py-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-6 w-100">
+                                    <h5 class="text-secondary" class="text-muted fw-normal mt-0 text-wrap" title="Active Projects">Cohort</h5>
+                                    <h3 class="my-2 py-1">{{ programme.cohort }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-6 mb-2 py-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-6 w-100">
+                                    <h5 class="text-secondary" class="text-muted fw-normal mt-0 text-wrap w-100" title="Active Projects">Partners</h7>
+                                    <p class="my-2 py-1 text-dark">
+                                        {% for partner in partners %}
+                                            {{ partner.name }} 
+                                        {% endfor %}
+                                    </p>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container">
+            <h5 class="pb-3">Participants, Coaches and Mentors</h5>
+            <li class="list-group-item my-2">
+                <h6>Participants</h6>
+                <div class="row mb-3 d-flex align-items-stretch">
+                    {% for participant in participants %}
+                        {% include 'partials/utilities/company.html' with company=participant %}
+                    {% endfor %}
+                </div>
+            </li>
+            <li class="list-group-item my-2">
+                <h6>Coaches and Mentors</h6>
+                <div class="row mb-3">
+                    {% for participant in coaches_mentors %}
+                        {% include 'partials/utilities/individual.html' with individual=participant %}
+                    {% endfor %}
+                </div>
+            </li>
+        </div>
+
+        <div class="container-fluid pt-3">
+            {% include 'document/document_page.html' with documents=documents %}
+        </div>
+
+    </div>
+    </div>
+
+{% endblock %}

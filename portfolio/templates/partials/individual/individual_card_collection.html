@@ -1,0 +1,14 @@
+<div class="container-fluid px-0">
+    <div class="row my-4">
+        {% if request.session.individual_layout == 1 or request.session.individual_layout == '1' or async_individual_layout == 1 %}
+            {% for individual in individuals %}
+                {% include 'partials/individual/individual_card.html' with individual=individual %}
+            {% endfor %}
+        {% else %}
+            {% for individual in individuals %}
+                {% include 'partials/individual/individual_list_card.html' with individual=individual %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% include 'partials/utilities/pagination.html' with page=individuals %}
+</div>

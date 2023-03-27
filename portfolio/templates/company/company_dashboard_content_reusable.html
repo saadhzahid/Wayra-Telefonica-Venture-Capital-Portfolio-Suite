@@ -1,0 +1,49 @@
+<div class="px-5 pb-2 rounded-3">
+    <div class="container-fluid pt-2 px-0 search-div-styling">
+
+        <div class="row">
+
+            <div style="max-width: 73%;">
+                {% include 'partials/search/searchbar.html' with search_url=search_url %}
+            </div>
+
+
+            <div class="btn-group w-auto mb-auto">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    <i class="fa-solid fa-filter"></i>
+                    Filter
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item" type="button" onclick="reload_companies(1, '#all-companies')">All
+                    </button>
+                    <button class="dropdown-item" type="button" onclick="reload_companies(2, '#all-companies')">
+                        Portfolio Companies
+                    </button>
+                    <button class="dropdown-item" type="button" onclick="reload_companies(3, '#all-companies')">
+                        Investors
+                    </button>
+                </div>
+            </div>
+
+            <div class="btn-group me-2 mb-2 w-auto mb-auto">
+                <a type="button" class="btn btn-sm btn-outline-secondary px-3" onclick="change_layout(1)"><i
+                        class="fa-solid fa-border-all pt-2"></i></a>
+                <a type="button" class="btn btn-sm btn-outline-secondary px-3" onclick="change_layout(2)"><i
+                        class="fa-solid fa-list pt-2"></i></a>
+                <a type="button" class="btn btn-sm btn-outline-secondary px-3" onclick="change_layout(3)"><i
+                        class="fa-solid fa-table-list pt-2"></i></a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="px-5 pt-5">
+    {% if request.session.company_layout == 3 or request.session.company_layout == '3' or async_company_layout == 3 %}
+        {% include 'partials/company/company_table.html' with companies=companies %}
+    {% else %}
+        {% include 'partials/company/company_card_collection.html' with companies=companies %}
+    {% endif %}
+</div>

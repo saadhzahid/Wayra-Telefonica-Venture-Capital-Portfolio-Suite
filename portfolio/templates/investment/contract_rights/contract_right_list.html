@@ -1,0 +1,58 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+    {% load static %}
+    <div class="container-fluid pt-3">
+        <h2 class="pb-3">Contract Right</h2>
+        <div class="col-12 d-flex justify-content-between">
+            <div class="btn-group mt-3">
+                {% if company_id %}
+                    <a href="{% url 'portfolio_company' company_id %}" class="btn btn-outline-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                    </a>
+                {% else %}
+                    <a href="{% url 'individual_profile' individual_id %}" class="btn btn-outline-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                    </a>
+                {% endif %}
+            </div>
+            <div class="btn-group mt-3">
+                <a href="{% url 'contract_right_create' investment_id %}" class="btn btn-outline-primary">Create
+                    Contract Right</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pt-3">
+
+        <div class="px-5 pt-3 pb-2 mb-4 bg-light rounded-3">
+            <table class="table table-hover">
+                <thead>
+                <th>Right</th>
+                <th colspan="3">Details</th>
+                <th colspan="2"> Action</th>
+                </thead>
+                <tbody>
+                {% for contract_right in contract_rights %}
+                    <tr>
+                        <td>{{ contract_right.right }}</td>
+                        <td colspan="3">{{ contract_right.details }}</td>
+                        <td colspan="2" class="d-flex justify-content-start">
+                            <a href="{% url 'contract_right_delete' contract_right.id %}"
+                               class="btn btn-sm btn-primary">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% include 'partials/utilities/pagination.html' with page=page_obj %}
+        </div>
+    </div>
+{% endblock %}

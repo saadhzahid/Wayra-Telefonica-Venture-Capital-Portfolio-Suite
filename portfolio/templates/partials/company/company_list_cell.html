@@ -1,0 +1,31 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/individual_card.css' %}">
+<a href="{% url 'portfolio_company' company.id %}" class="text-reset text-decoration-none">
+    <div class="d-flex align-items-center justify-content-between mb-3 mx-2 border">
+        <div class="my-4 d-md-flex align-items-center flex-wrap">
+            <div class="img-holder">
+                <div class="company-details-avatar" style="width: 80px; height: 80px"></div>
+            </div>
+
+            <div class="ps-4">
+                <h4 class="ps-2 text-md-left">{{ company.name }}</h4>
+                <div class="d-flex rounded-3 p-2 mb-2 mt-2 w-100">
+                    <div>
+                        <p class="text-muted mb-1"><i
+                                class="fa-solid fa-location-dot"></i> {{ company.registered_address }}</p>
+                    </div>
+                    <div class="px-3">
+                        <p class="text-muted mb-1"><i class="fa-solid fa-city"></i> {{ company.jurisdiction }}</p>
+                    </div>
+                    <div>
+                        <p class="text-muted mb-1"><i
+                                class="fa-solid fa-calendar-days"></i> {{ company.incorporation_date }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-4 me-4">
+            <a href="#" class="btn btn-outline-secondary">View</a>
+        </div>
+    </div>
+</a>

@@ -1,0 +1,13 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+    {% load static %}
+
+
+    <h1>Delete founder</h1>
+    <p class="founder_delete">Are you sure you want to delete this founder?</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="DELETE founder" class="btn mb-2 home_button btn-lg btn-secondary mb=2">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% if companies %}
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 bg-white">
+            <thead class="bg-light">
+            <tr>
+                <th>Name</th>
+                <th>CRN</th>
+                <th>Registered Address</th>
+                <th>Jurisdiction</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cell in companies %}
+                {% include 'archive/archived_company_table_cell.html' with company=cell %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <tr>No companies are currently archived.</tr>
+{% endif %}

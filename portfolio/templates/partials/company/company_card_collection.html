@@ -1,0 +1,14 @@
+<div class="container-fluid px-0">
+    <div class="row my-4">
+        {% if request.session.company_layout == 1 or request.session.company_layout == '1' or async_company_layout == 1 %}
+            {% for company in companies %}
+                {% include 'partials/company/company_card.html' %}
+            {% endfor %}
+        {% else %}
+            {% for company in companies %}
+                {% include 'partials/company/company_list_cell.html' %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% include 'partials/utilities/pagination.html' with page=companies %}
+</div>

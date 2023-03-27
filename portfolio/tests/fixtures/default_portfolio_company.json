@@ -1,0 +1,24 @@
+[
+  {
+    "model": "portfolio.company",
+    "pk": 101,
+    "fields": {
+      "id": 101,
+      "name": "Child 101 Ltd",
+      "company_registration_number": "00000101",
+      "trading_names": "D101_LTD",
+      "previous_names": "Ante 101 LTD",
+      "registered_address": "Strand, London WC2R 2LS",
+      "jurisdiction": "United Kingdom",
+      "incorporation_date": "2023-02-17"
+    }
+  },
+  {
+    "model": "portfolio.portfolio_company",
+    "pk": 101,
+    "fields": {
+      "parent_company": 101,
+      "wayra_number": "WN-1"
+    }
+  }
+]

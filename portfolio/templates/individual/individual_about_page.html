@@ -1,0 +1,129 @@
+{% extends 'dashboard_template.html' %}
+{% block main %}
+    {% load static %}
+
+    {#    <link rel="stylesheet" href="{% static 'css/indiviudal.css' %}">#}
+    <link href="{% static 'css/indiv_about.css' %}" rel="stylesheet"/>
+
+    <div class="px-5 py-2 rounded-3 mt-2">
+        <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+
+            <div class="col">
+                {% load util %}
+                {% if individual|is_founder_and_investor %}
+                    <p class="mb-1">Founder/Investor </p>
+                {% elif individual|is_founder %}
+                    <p class="mb-1">Founder </p>
+                {% elif individual|is_investor %}
+                    <p class="mb-1">Investor </p>
+                {% else %}
+                    <p class="mb-1">Individual</p>
+                {% endif %}
+                <h2 class="pb-3">{{individual.name}}</h2>
+            </div>
+
+            <!-- <div class="btn-group me-1">
+                {% if user.is_staff %}
+                    <a href="{% url 'individual_document_upload' individual.id %}"
+                       class="btn btn-sm btn-outline-primary">Upload
+                        a document</a>
+                {% endif %}
+            </div>
+
+            <div class="btn-group me-2">
+                {% load util %}
+                {% if individual|is_investor %}
+                    <a type="button" class="btn btn-sm btn-outline-primary"
+                       href="{% url 'investor_individual_modify' individual.id %}">Update Investor Detail</a>
+                {% endif %}
+                {% if individual|is_founder %}
+                    <a type="button" class="btn btn-sm btn-outline-primary"
+                       href="{% url 'founder_modify' individual.id %}">Update Founder Detail</a>
+                {% endif %}
+            </div> -->
+
+            <div class="btn-group me-3">
+                {% if individual.is_archived %}
+                    <a type="button" class="btn btn-sm btn-outline-secondary"
+                       href="{% url 'unarchive_individual' individual.id %}">Unrchive</a>
+                {% else %}
+                    <a type="button" class="btn btn-sm btn-outline-success"
+                       href="{% url 'archive_individual' individual.id %}">Archive</a>
+                {% endif %}
+                <a type="button" class="btn btn-sm btn-outline-primary"
+                   href="{% url 'individual_update' individual.id %}">Update</a>
+                <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal"
+                        data-target="#deleteIndividualModal">Delete
+                </button>
+            </div>
+
+            <div class="btn-group me-3">
+                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                  Other Actions
+                </button>
+                <div class="dropdown-menu dropdown-menu-right p-0">
+                    {% if user.is_staff %}
+                        <a href="{% url 'individual_document_upload' individual.id %}"
+                        class="btn btn-sm btn-outline-secondary w-100">Upload
+                            a document</a>
+                    {% endif %}
+                    {% if individual|is_investor %}
+                        <a type="button" class="btn btn-sm btn-outline-secondary w-100"
+                        href="{% url 'investor_individual_modify' individual.id %}">Update Investor Detail</a>
+                    {% endif %}
+                    {% if individual|is_founder %}
+                        <a type="button" class="btn btn-sm btn-outline-secondary w-100"
+                        href="{% url 'founder_modify' individual.id %}">Update Founder Detail</a>
+                    {% endif %}
+                </div>
+              </div>
+
+            {% include 'partials/individual/individual_delete_modal.html' %}
+
+        </div>
+
+        <div class="row align-items-md-stretch">
+            <!-- Pills navs -->
+            <ul id="tabs" class="nav nav-pills pb-3 mt-auto overflow-x border-0">
+                <li class="nav-item"><a data-target="#overview" data-toggle="tab" class="nav-link active font-regular">Overview</a>
+                </li>
+                {% if founder_companies|length > 0 %}
+                <li class="nav-item"><a data-target="#individuals" data-toggle="tab" class="nav-link font-regular">Individuals
+                    association</a>
+                </li>
+                {% endif %}
+                <li class="nav-item"><a data-target="#documents" data-toggle="tab" class="nav-link font-regular">Documents</a>
+                </li>
+                {% if individual|is_investor %}
+                    <li class="nav-item"><a data-target="#rounds" data-toggle="tab" class="nav-link font-regular">
+                        Investments
+                    </a></li>
+                {% endif %}
+            </ul>
+
+            <!-- Pills content -->
+            <div id="tabsContent" class="tab-content">
+                <div id="overview" class="tab-pane fade active show">
+                    {% include 'individual/details_section.html' %}
+                </div>
+                {% if founder_companies|length > 0 %}
+                <div id="individuals" class="tab-pane fade">
+                    {% include 'individual/company_association_section.html' with founder_companies=founder_companies %}
+                </div>
+                {% endif %}
+                <div id="documents" class="tab-pane fade">
+                    <div class="container-fluid pt-3">
+                        {% include 'document/document_page.html' with documents=documents %}
+                    </div>
+                </div>
+                {% if individual|is_investor %}
+                    <div id="rounds" class="tab-pane fade">
+                        {% include 'investment/investments_list_startups.html' with investments=investments %}
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

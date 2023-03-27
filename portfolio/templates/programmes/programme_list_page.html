@@ -1,0 +1,28 @@
+{% extends 'dashboard_template.html' %}
+{% load static %}
+{% block main %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Programmes</h1>
+    </div>
+
+    <div class="px-5 py-2 rounded-3">
+        <div class="container-fluid pt-2 px-0 search-div-styling" style="position:absolute;z-index: 1;max-width: 75%;">
+
+            <div class="row">
+
+                {% include 'programmes/search/searchbar.html' %}
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="px-5 pt-5">
+        {% include 'programmes/programme/programme_card_collection.html' with programmes=programmes %}
+    </div>
+
+    <a href="{% url 'programme_create' %}" class="create-company-plus-button"><i
+            class="fas fa-plus-circle fa-3x pt-3 pb-3"></i></a>
+
+{% endblock %}

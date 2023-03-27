@@ -1,0 +1,146 @@
+#backgrouhd {
+    background-color: red;
+}
+
+.filter-white{
+  filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(321deg) brightness(102%) contrast(101%);
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(#7468f7, #80d0c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.wayra-logo {
+    max-width: 120px;
+    mix-blend-mode: multiply;
+}
+
+.navbar-gradient {
+    background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+}
+
+.individual_count {
+    font-weight: bold;
+    font-size: 36px;
+    font-family: Monospace;
+    border: 2px solid black;
+    outline: #26bcb7 solid 10px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.individual_delete {
+    padding: 20px;
+    position: relative;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: Monospace;
+
+}
+
+.company_plus_button {
+    position: fixed;
+    bottom: 5px;
+    right: 20px;
+    margin: 0;
+    padding: 5px 3px;
+}
+
+#search_input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #ccc;
+}
+
+.search-div-styling {
+    position: absolute;
+    z-index: 1;
+    max-width: 75%;
+}
+
+.create-company-plus-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    margin: 0;
+    padding: 5px 3px;
+}
+
+
+#companycard {
+
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+
+}
+
+
+#companycard:hover {
+
+    /* box-shadow: 1px 1px 1px 1px #e9ecef; */
+    transform: scale(1.04);
+}
+
+#individualcard {
+
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+
+}
+
+
+#individualcard:hover {
+
+    /* box-shadow: 1px 1px 1px 1px #e9ecef; */
+    transform: scale(1.04);
+}
+
+
+#programcard {
+
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+
+}
+
+
+#programcard:hover {
+
+    /* box-shadow: 1px 1px 1px 1px #e9ecef; */
+    transform: scale(1.04);
+}
+
+
+#navbaritems {
+    transition: all 0.2 ease;
+    cursor: pointer;
+}
+
+#navbaritems:hover {
+    transform: scale(1.01);
+}
+
+
+#navbar {
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+}
+
+#navbar:hover {
+    transform: scale(1.01);
+}
+
