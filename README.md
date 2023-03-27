@@ -4,6 +4,18 @@
 
 **Name of the software:** VCPMS
 
+**Project Description:** Developed an application for our client Wayra Telefonica which allows Wayra to unify key information regarding companies and 
+stakeholders.
+
+![image](https://user-images.githubusercontent.com/86085628/228028111-4ea74de7-ca0b-417a-8a0c-0bb8602cc1e1.png)
+![image](https://user-images.githubusercontent.com/86085628/228028198-8942cae7-8a65-4d34-b02e-377a6214e735.png)
+![image](https://user-images.githubusercontent.com/86085628/228028250-6553a653-900f-43a7-969f-cbfa0685914a.png)
+![image](https://user-images.githubusercontent.com/86085628/228028311-7b127c1a-42ce-4484-a30b-797acb5f8bf1.png)
+![image](https://user-images.githubusercontent.com/86085628/228028389-4052e4d7-0120-42bb-ad6e-5f0df131a30b.png)
+![image](https://user-images.githubusercontent.com/86085628/228028434-62e8477c-b3e1-4003-a7b4-366e850d26a6.png)
+
+
+
 ## Team Kinkajou
 
 The members of the team are:
