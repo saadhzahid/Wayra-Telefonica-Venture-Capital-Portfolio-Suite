@@ -102,3 +102,9 @@ by [picturepan2](https://github.com/picturepan2):
 
 - Copyright (c) 2014-2015 Picturepan2. MIT Licensed,
   see [LICENSE](https://github.com/AdnanTurkay/team-kinkajou/blob/main/portfolio/static/css/LICENSE) for details.
+  
+  
+## Note
+
+Application was migrated from a seperate, private repository. Hence the lack of activity.
+
