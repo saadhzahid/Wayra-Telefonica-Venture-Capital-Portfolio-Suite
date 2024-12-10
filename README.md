@@ -36,21 +36,6 @@ The members of the team are:
 The project is called `vcpms` (Venture Capital Portfolio Management Suite). It currently consists of a single
 app `portfolio` where all functionality resides.
 
-## Deployed version of the application
-
-The deployed version of the application can be found at *[http://szahid29a.pythonanywhere.com/](http://szahid29a.pythonanywhere.com/)*.
-
-Credentials for accessing different types of user accounts:
-  - Staff account (has access to all components of the software):
-    - Username: petra.pickles@example.org
-    - Password: Password123
-  - User account (has limited visibility of the components):
-    - Username: john.doe@example.org
-    - Password: Password123
-  - Superuser account (accessed via the [Django administrator panel](http://szahid29a.pythonanywhere.com/admin))
-    - Username: wayrasuperuser@example.org
-    - Password: Superuser123!
-
 ## Installation instructions
 
 To install the software and use it in your local development environment, you must first set up and activate a local
